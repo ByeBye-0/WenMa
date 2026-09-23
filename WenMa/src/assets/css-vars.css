@@ -1,0 +1,33 @@
+/* 暗黑模式变量（深蓝灰配色，更有质感） */
+
+html.dark {
+  --bg-color: #0f172a; /* 主背景：深蓝灰 */
+  --text-color: #f8fafc; /* 主文字：极浅灰白 */
+  --text-sub-color: #94a3b8; /* 副文字：灰蓝 */
+  --card-bg: #1e293b; /* 卡片背景：比主背景亮一点 */
+  --card-border: rgba(255, 255, 255, 0.1);
+  --header-bg: rgba(15, 23, 42, 0.92);
+  --section-bg: #1e293b;
+  --brand-orange: #ff7a18; /* 暗黑模式下橙色稍微提亮 */
+}
+/* 暗黑模式下的滚动条美化（可选，但体验更好） */
+html.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+html.dark ::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: var(--card-bg);
+  border-radius: 4px;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--text-sub-color);
+}
+
+/* 防止图片在暗黑模式下过于刺眼 */
+html.dark img {
+  filter: brightness(0.85) contrast(0.9);
+  transition: filter 0.4s ease;
+}

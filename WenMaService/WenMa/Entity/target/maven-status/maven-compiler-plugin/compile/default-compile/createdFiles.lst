@@ -1,0 +1,7 @@
+Entity\EmpExpr.class
+Entity\Stu.class
+Entity\EmpLog.class
+Entity\Dept.class
+Entity\Courses.class
+Entity\StuCourses.class
+Entity\Emp.class

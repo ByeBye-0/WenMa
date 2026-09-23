@@ -1,0 +1,7 @@
+Mapper\StuMapper.class
+Mapper\CoursesMapper.class
+Mapper\DeptMapper.class
+Mapper\StuCoursesMapper.class
+Mapper\EmpExprMapper.class
+Mapper\EmpLogMapper.class
+Mapper\EmpMapper.class
