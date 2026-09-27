@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getToken } from '@/Utils/userInfo'
 
 export const request = axios.create({
   baseURL: '/api',
@@ -18,8 +19,7 @@ request.interceptors.response.use(
 request.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
-    config.headers.token = JSON.parse(localStorage.getItem('userInfo')).token
-
+    config.headers.token = getToken()
     return config
   },
   function (error) {

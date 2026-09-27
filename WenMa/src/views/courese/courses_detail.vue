@@ -5,10 +5,10 @@ import { getDetail } from '@/api/courses'
 import { ref, onMounted } from 'vue'
 import { ElNotification } from 'element-plus'
 import { BuyCourses } from '@/api/StuCourses'
+import { getUserInfo } from '@/Utils/userInfo'
 
 // 获取个人信息
-const userInfoStr = localStorage.getItem('userInfo')
-const stuid = userInfoStr ? JSON.parse(userInfoStr).userId : null
+const stuid = getUserInfo()?.userId ?? null
 
 const route = useRoute()
 // 获取课程id（从路径获取）

@@ -5,9 +5,9 @@ import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { UserFilled } from '@element-plus/icons-vue'
 import { getCoursesApi } from '@/api/courses'
+import { getUserInfo } from '@/Utils/userInfo'
 const router = useRouter()
-const localUser = localStorage.getItem('userInfo')
-const userInfo = localUser ? JSON.parse(localStorage.getItem('userInfo')) : null
+const userInfo = getUserInfo()
 // 首页热门课程(按报名人数取前 8)
 const hotCourses = ref()
 const getHotCourses = async () => {

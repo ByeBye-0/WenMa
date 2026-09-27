@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { User, Collection, Timer, Plus } from '@element-plus/icons-vue'
 import { ElMessage, ElNotification } from 'element-plus'
 import { getIds, getMyCourses, getProgress } from '@/api/StuCourses'
+import { getUserInfo } from '@/Utils/userInfo'
 
 const router = useRouter()
 
@@ -47,8 +48,8 @@ const coursesNum = ref([])
 const coursesRes = ref([])
 const coursesProgress = ref([])
 
-const userInfo = localStorage.getItem('userInfo')
-const stuid = userInfo ? JSON.parse(userInfo).userId : null
+const userInfo = getUserInfo()
+const stuid = userInfo?.userId ?? null
 const coursesIds = ref([])
 
 const Ids = async () => {
@@ -79,7 +80,8 @@ const Ids = async () => {
   }
 }
 
-const studentInfo = ref(JSON.parse(userInfo))
+// 未登录时兜底为空对象，避免模板读取 studentInfo.name 报错
+const studentInfo = ref(userInfo ?? {})
 const myCourses = ref([])
 
 // 获取学生课程信息，并把进度合并进每个课程

@@ -6,6 +6,7 @@ import { ElMessage } from 'element-plus'
 import { ref, onMounted } from 'vue'
 import { Moon, Sunny } from '@element-plus/icons-vue'
 import { useDark } from '@vueuse/core'
+import { getUserInfo, clearUserInfo } from '@/Utils/userInfo'
 
 const isDark = useDark()
 
@@ -19,7 +20,7 @@ onMounted(() => {
 })
 // 用 ref 缓存登录态(本布局内登录/退出时同步更新)
 const logged = ref(false)
-const user = ref(JSON.parse(localStorage.getItem('userInfo')))
+const user = ref(getUserInfo())
 
 // 导航项：尚未实现的功能标记 disabled，避免点击后出现 404
 const navs = [
@@ -29,7 +30,7 @@ const navs = [
 ]
 
 const goSpace = () => {
-  if (user.value.userType === '1') {
+  if (user.value?.userType === '1') {
     router.push('/student/space')
   } else if (user.value.userType === '2') {
     router.push('/employee/space')
@@ -42,7 +43,7 @@ const handleLogout = () => {
   logged.value = false
   user.value = null
   ElMessage.success('已退出登录')
-  localStorage.removeItem('userInfo')
+  clearUserInfo()
   if (route.path !== '/') router.push('/')
 }
 </script>

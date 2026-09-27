@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { LoginApi } from '@/api/Login.js'
 import { ElMessage, ElNotification } from 'element-plus'
 import { useRouter } from 'vue-router'
+import { setUserInfo } from '@/Utils/userInfo'
 
 const router = useRouter()
 const LoginInfo = ref({ userType: '', username: '', password: '' })
@@ -28,7 +29,7 @@ const Login = async () => {
         type: 'success',
         duration: 3000,
       })
-      localStorage.setItem('userInfo', JSON.stringify(res.data))
+      setUserInfo(res.data)
       console.log('登录成功，用户信息已存储到 localStorage:', res)
     } else {
       console.error('登录失败:', res)
